@@ -3,6 +3,12 @@ plugins {
     application
 }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21);
+    }
+}
+
 application {
     mainClass = "hexlet.code.App"
 }
@@ -21,4 +27,8 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+tasks.getByName("run", JavaExec::class) {
+    standardInput = System.`in`
 }
