@@ -14,7 +14,7 @@ public class Engine {
     public void run(Game game) {
         interaction.printMessage("Welcome to the Brain Games!");
         var playerName = interaction.getInput("May i have your name? ");
-        interaction.printMessage("Hello " + playerName + "!");
+        interaction.printMessage("Hello, " + playerName + "!");
         interaction.printMessage(game.getDescription());
 
         game.generateQuestions();
