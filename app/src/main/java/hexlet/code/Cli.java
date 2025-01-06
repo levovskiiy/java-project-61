@@ -9,7 +9,6 @@ public class Cli {
         System.out.print("May I have your name? ");
         var username = scanner.nextLine();
         System.out.println("Hello, " + username + "!");
-
         scanner.close();
         return username;
     }
