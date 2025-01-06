@@ -5,7 +5,7 @@ import hexlet.code.interaction.ConsoleInteraction;
 import hexlet.code.interaction.PlayerInteraction;
 
 public class App {
-    private static final PlayerInteraction interaction = new ConsoleInteraction();
+    private static final PlayerInteraction INTERACTION = new ConsoleInteraction();
 
     public static void main(String[] args) {
         start();
@@ -21,11 +21,12 @@ public class App {
     private static void start() {
         printGameMenu();
 
-        var choiceCode = interaction.getInput();
+        var choiceCode = INTERACTION.getInput();
         var gameChoice = MenuChoice.fromCode(Integer.parseInt(choiceCode));
 
-        if (gameChoice == MenuChoice.EXIT)
+        if (gameChoice == MenuChoice.EXIT) {
             return;
+        }
 
         if (gameChoice == MenuChoice.GREETING) {
             Cli.greeting();
@@ -33,9 +34,9 @@ public class App {
         }
 
         var game = GameFactory.createGame(gameChoice);
-        var engine = new Engine(interaction);
+        var engine = new Engine(INTERACTION);
         engine.run(game);
 
-        interaction.close();
+        INTERACTION.close();
     }
 }
