@@ -4,29 +4,39 @@ import hexlet.code.games.Game;
 import hexlet.code.interaction.PlayerInteraction;
 
 
-public class Engine {
+public final class Engine {
+    /**
+     * АПИ взаимодействия пользователя с движком.
+     */
     private final PlayerInteraction interaction;
+    /**
+     * Макисмальное количество попыток.
+     */
+    private static final int MAX_ATTEMPTS = 3;
 
-    public Engine(PlayerInteraction interaction) {
-        this.interaction = interaction;
+    Engine(final PlayerInteraction playerInteraction) {
+        interaction = playerInteraction;
     }
 
-    public void run(Game game) {
+    /**
+     * Запускает игровой движок. Получает игру из которой генерирует данные для игрока.
+     * @param game игра
+     */
+    public void run(final Game game) {
         interaction.printMessage("Welcome to the Brain Games!");
         var playerName = interaction.getInput("May i have your name? ");
         interaction.printMessage("Hello, " + playerName + "!");
         interaction.printMessage(game.getDescription());
 
-        game.generateQuestions();
-        var questions = game.getGameData();
+        var questions = game.generateQuestions(MAX_ATTEMPTS);
         for (var question : questions) {
-            interaction.printMessage("Question: " + question.getActual());
+            interaction.printMessage("Question: " + question.actual());
             var playerAnswer = interaction.getInput("Your answer: ");
 
-            if (playerAnswer.equals(question.getExpected())) {
+            if (playerAnswer.equals(question.expected())) {
                 System.out.println("Correct!");
             } else {
-                printIncorrectMessage(question.getExpected(), playerAnswer, playerName);
+                printIncorrectMessage(question.expected(), playerAnswer, playerName);
                 return;
             }
         }
@@ -35,7 +45,13 @@ public class Engine {
         interaction.close();
     }
 
-    private void printIncorrectMessage(String expected, String actual, String username) {
+    /**
+     * Печатает сообщение в случае неудачной попытки.
+     * @param expected ожидаемый результат
+     * @param actual значение которое получено
+     * @param username имя игрока
+     */
+    private void printIncorrectMessage(final String expected, final String actual, final String username) {
         var wrongMessage = String.format("'%s' is wrong answer ;(. Correct answer was '%s'", actual, expected);
         var tryGameMessage = String.format("Let's try again, %s!", username);
 

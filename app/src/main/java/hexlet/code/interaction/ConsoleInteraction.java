@@ -2,11 +2,14 @@ package hexlet.code.interaction;
 
 import java.util.Scanner;
 
-public class ConsoleInteraction implements PlayerInteraction {
+public final class ConsoleInteraction implements PlayerInteraction {
+    /**
+     * Консольный ввод/вывод.
+     */
     private final Scanner scanner = new Scanner(System.in);
 
     @Override
-    public String getInput(String prompt) {
+    public String getInput(final String prompt) {
         if (!prompt.isEmpty()) {
             System.out.print(prompt);
         }
@@ -20,14 +23,11 @@ public class ConsoleInteraction implements PlayerInteraction {
     }
 
     @Override
-    public void printMessage(String message) {
+    public void printMessage(final String message) {
         System.out.println(message);
     }
 
-    public int getInteger() {
-        return scanner.nextInt();
-    }
-
+    @Override
     public void close() {
         scanner.close();
     }

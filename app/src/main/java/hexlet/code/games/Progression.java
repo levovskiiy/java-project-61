@@ -5,19 +5,20 @@ import hexlet.code.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Progression implements Game {
-    private final int maxAttempts = 3;
-    private final List<Question> questions = new ArrayList<>();
-
+public final class Progression implements Game {
     @Override
-    public void generateQuestions() {
-        final int maxLengthProgression = 15;
-        final int maxStepProgression = 8;
+    public List<Question> generateQuestions(final int maxAttempts) {
+        var questions = new ArrayList<Question>();
+
+        final var maxLengthProgression = 15;
+        final var maxStepProgression = 8;
+        final var maxSize = 10;
+        final var minSize = 5;
 
         for (int i = 0; i < maxAttempts; i++) {
             var start = Utils.generateRandomInt(1, maxLengthProgression);
             var step = Utils.generateRandomInt(2, maxStepProgression);
-            var size = Utils.generateRandomInt(5, 10);
+            var size = Utils.generateRandomInt(minSize, maxSize);
             var progression = generateProgression(start, step, size);
             var randomHiddenElement = progression[Utils.generateRandomInt(0, size - 1)];
 
@@ -27,6 +28,8 @@ public class Progression implements Game {
 
             questions.add(question);
         }
+
+        return questions;
     }
 
     @Override
@@ -34,12 +37,7 @@ public class Progression implements Game {
         return "What number is missing in the progression?";
     }
 
-    @Override
-    public List<Question> getGameData() {
-        return questions;
-    }
-
-    private String generateProgressionQuestion(int[] progression, int randomHiddenNumber) {
+    private String generateProgressionQuestion(final int[] progression, final int randomHiddenNumber) {
         var question = new StringBuilder();
 
         for (var num : progression) {
@@ -55,7 +53,7 @@ public class Progression implements Game {
         return question.toString();
     }
 
-    private int[] generateProgression(int start, int step, int size) {
+    private int[] generateProgression(final int start, final int step, final int size) {
         int[] result = new int[size];
 
         for (int i = 0; i < size; i++) {

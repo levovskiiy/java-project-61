@@ -1,15 +1,18 @@
 package hexlet.code;
 
-public class Utils {
-    public static int generateRandomInt(int maxValue) {
+public final class Utils {
+    private Utils() {
+    }
+
+    public static int generateRandomInt(final int maxValue) {
         return (int) (Math.random() * maxValue);
     }
 
-    public static int generateRandomInt(int minValue, int maxValue) {
+    public static int generateRandomInt(final int minValue, final int maxValue) {
         return minValue + (int) (Math.random() * maxValue);
     }
 
-    public static int gcd(int a, int b) {
+    public static int gcd(final int a, final int b) {
         if (a == 0) {
             return b;
         }
@@ -17,7 +20,7 @@ public class Utils {
         return gcd(b % a, a);
     }
 
-    public static boolean isPrime(int n) {
+    public static boolean isPrime(final int n) {
         if (n <= 1) {
             return false;
         }

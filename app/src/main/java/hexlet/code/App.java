@@ -7,7 +7,7 @@ import hexlet.code.interaction.PlayerInteraction;
 public class App {
     private static final PlayerInteraction INTERACTION = new ConsoleInteraction();
 
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         start();
     }
 

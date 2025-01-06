@@ -2,7 +2,10 @@ package hexlet.code;
 
 import java.util.Scanner;
 
-public class Cli {
+public final class Cli {
+    private Cli() {
+    }
+
     public static String greeting() {
         var scanner = new Scanner(System.in);
         System.out.println("Welcome to the Brain Games!");

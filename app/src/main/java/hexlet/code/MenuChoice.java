@@ -12,9 +12,9 @@ public enum MenuChoice {
     private final int code;
     private final String description;
 
-    MenuChoice(int code, String description) {
-        this.code = code;
-        this.description = description;
+    MenuChoice(final int menuCode, final String menuDescription) {
+        code = menuCode;
+        description = menuDescription;
     }
 
     public int getCode() {
@@ -25,7 +25,7 @@ public enum MenuChoice {
         return description;
     }
 
-    public static MenuChoice fromCode(int code) {
+    public static MenuChoice fromCode(final int code) {
         for (MenuChoice choice : values()) {
             if (choice.getCode() == code) {
                 return choice;
