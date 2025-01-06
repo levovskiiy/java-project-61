@@ -1,4 +1,4 @@
-package games;
+package hexlet.code.games;
 
 import java.util.List;
 

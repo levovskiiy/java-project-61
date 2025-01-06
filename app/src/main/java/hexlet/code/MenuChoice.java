@@ -1,3 +1,5 @@
+package hexlet.code;
+
 public enum MenuChoice {
     GREETING(1, "Greeting"),
     EVEN(2, "Even"),

@@ -1,4 +1,4 @@
-package interaction;
+package hexlet.code.interaction;
 
 import java.util.Scanner;
 

@@ -1,3 +1,5 @@
+package hexlet.code;
+
 import hexlet.code.games.Game;
 import hexlet.code.interaction.PlayerInteraction;
 

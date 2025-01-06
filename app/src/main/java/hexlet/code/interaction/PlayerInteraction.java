@@ -1,4 +1,4 @@
-package interaction;
+package hexlet.code.interaction;
 
 public interface PlayerInteraction {
     String getInput(String prompt);

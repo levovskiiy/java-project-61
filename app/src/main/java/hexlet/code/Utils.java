@@ -1,3 +1,5 @@
+package hexlet.code;
+
 public class Utils {
     public static int generateRandomInt(int maxValue) {
         return (int) (Math.random() * maxValue);
